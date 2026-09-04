@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class TrainHead : MonoBehaviour
 {
+    [SerializeReference] private EatSomething m_Eat;
     public RSO_Train Speed;
     public InputActionReference Rotate;
     public GameObject Wagon;
@@ -15,14 +15,14 @@ public class TrainHead : MonoBehaviour
     private List<Vector3> m_PositionHistory = new List<Vector3>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         m_LastHeadPosition= transform.position;
         m_PositionHistory.Add(m_LastHeadPosition);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Mouvement ...
         float SpeedPercent = Mathf.InverseLerp(0f, 30f, Speed.m_Speed);
@@ -42,6 +42,23 @@ public class TrainHead : MonoBehaviour
             {
                 m_PositionHistory.RemoveAt(m_PositionHistory.Count -1);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Collectible"))
+        {
+            if (m_Eat != null)
+            {
+                m_Eat.EatCollectible();
+            }
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Wall"))
+        {
+            Debug.Log("Mort! Mort! Mort!");
+            Destroy(transform.parent.gameObject);
         }
     }
 }

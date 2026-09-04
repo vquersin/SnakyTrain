@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b38db02ff4d49f469fd9f20613b20a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnakeManager
+  EatEvent: {fileID: 11400000, guid: 98d5abb40b12d9b4390d60e9305393cb, type: 2}
   head: {fileID: 6639473861200065612}
+  TrainData: {fileID: 11400000, guid: 700c429dc9e6e424784eafd57315ccd9, type: 2}
+  List_Wagon: []
+  m_SpacingMultiplier: 5
 --- !u!1 &8527383161115207777
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,9 +63,10 @@ GameObject:
   - component: {fileID: 7467534133337461694}
   - component: {fileID: 504005988644467204}
   - component: {fileID: 6639473861200065612}
+  - component: {fileID: 4614735715277901113}
   m_Layer: 0
   m_Name: TrainHead
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,7 +158,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -171,7 +176,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae785ab2c78dcca4a813325d8d4d7c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnakeHead
+  m_Eat: {fileID: 11400000, guid: 98d5abb40b12d9b4390d60e9305393cb, type: 2}
   Speed: {fileID: 11400000, guid: 700c429dc9e6e424784eafd57315ccd9, type: 2}
   Rotate: {fileID: 6251514384446691800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   Wagon: {fileID: 2235014338450753597, guid: 6c6bb65ee961cd841b2ea552fd622f31, type: 3}
   Train_Wagon: {fileID: 11400000, guid: 700c429dc9e6e424784eafd57315ccd9, type: 2}
+--- !u!54 &4614735715277901113
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527383161115207777}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
