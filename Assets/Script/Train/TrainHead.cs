@@ -7,12 +7,13 @@ public class TrainHead : MonoBehaviour
     [SerializeReference] private EatSomething m_Eat;
     public RSO_Train Speed;
     public InputActionReference Rotate;
-    public GameObject Wagon;
     private float m_Spacing = 0.5f;
     public RSO_Train Train_Wagon;
 
-    private Vector3 m_LastHeadPosition;
-    private List<Vector3> m_PositionHistory = new List<Vector3>();
+    public Vector3 m_LastHeadPosition;
+    public List<Vector3> m_PositionHistory = new List<Vector3>();
+
+    public TrainManager m_TrainManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -38,9 +39,11 @@ public class TrainHead : MonoBehaviour
             m_PositionHistory.Insert(0,transform.position);
             m_LastHeadPosition = transform.position;
 
-            if(m_PositionHistory.Count > Train_Wagon.Nb_Wagon)
+            int maxHistory = (Train_Wagon.Nb_Wagon + 1) * m_TrainManager.m_SpacingMultiplier;
+
+            if (m_PositionHistory.Count > maxHistory)
             {
-                m_PositionHistory.RemoveAt(m_PositionHistory.Count -1);
+                m_PositionHistory.RemoveAt(m_PositionHistory.Count - 1);
             }
         }
     }
