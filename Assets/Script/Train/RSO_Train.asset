@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de3c5a99203c754994eadd708b2765e, type: 3}
   m_Name: RSO_Train
   m_EditorClassIdentifier: Assembly-CSharp::Speed
-  m_Speed: 6
+  m_Speed: 5
   m_SpeedRotate:
     serializedVersion: 2
     m_Curve:
@@ -37,4 +37,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Nb_Wagon: 3
+  Nb_Wagon: 0
