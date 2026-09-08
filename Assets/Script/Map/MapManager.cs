@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class MapManager : MonoBehaviour
     // Variables ...
     private int rangeMin = -30;
     private int rangeMax = 30;
+    [SerializeField] private float TimerSpawn = 10f;
 
     // Event ...
     [SerializeField] private RSO_PositionMapValidity PositionValidity;
@@ -25,6 +27,9 @@ public class MapManager : MonoBehaviour
         {
             PeakPosition(m_Wall);
         }
+        PeakPosition(m_Collectible);
+        StartCoroutine(SpawnWallTimer());
+        StartCoroutine(SpawnCollectibleTimer());
     }
 
     private void OnEnable()
@@ -74,5 +79,17 @@ public class MapManager : MonoBehaviour
         {
             PeakPosition(entity);
         }
+    }
+    private IEnumerator SpawnWallTimer()
+    {
+        yield return new WaitForSeconds(TimerSpawn);
+        PeakPosition(m_Wall);
+        StartCoroutine(SpawnWallTimer());
+    }
+    private IEnumerator SpawnCollectibleTimer()
+    {
+        yield return new WaitForSeconds(TimerSpawn);
+        PeakPosition(m_Collectible);
+        StartCoroutine(SpawnCollectibleTimer());
     }
 }
