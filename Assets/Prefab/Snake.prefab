@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 504005988644467204}
   - component: {fileID: 6639473861200065612}
   - component: {fileID: 4614735715277901113}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TrainHead
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -81,8 +81,8 @@ Transform:
   m_GameObject: {fileID: 8527383161115207777}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.31686, y: -0.2218, z: -0.31686}
-  m_LocalScale: {x: 1, y: 0.55, z: 1.6}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3989329890341017621}
