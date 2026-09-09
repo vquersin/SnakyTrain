@@ -1,8 +1,5 @@
 using System.Collections;
-using Unity.Mathematics;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class MapManager : MonoBehaviour
 {
@@ -12,8 +9,8 @@ public class MapManager : MonoBehaviour
     public GameObject PeakPosTrigger;
 
     // Variables ...
-    private int rangeMin = -30;
-    private int rangeMax = 30;
+    private int rangeMin = -28;
+    private int rangeMax = 28;
     [SerializeField] private float TimerSpawn = 10f;
 
     // Event ...
