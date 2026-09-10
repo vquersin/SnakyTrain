@@ -42,7 +42,7 @@ public class MapManager : MonoBehaviour
     {
         int x = UnityEngine.Random.Range(rangeMin+1, rangeMax);
         int z = UnityEngine.Random.Range(rangeMin+1, rangeMax);
-        Vector3 peakPos = new Vector3(x,1.5f,z);
+        Vector3 peakPos = new Vector3(x,0,z);
         GameObject trigger = Instantiate(PeakPosTrigger, peakPos, Quaternion.identity);
 
         TriggPeaking triggerScript = trigger.GetComponent<TriggPeaking>();

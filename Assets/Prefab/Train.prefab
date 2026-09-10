@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SnakeManager
   EatEvent: {fileID: 11400000, guid: 98d5abb40b12d9b4390d60e9305393cb, type: 2}
+  WagonSpeedMusicEvent: {fileID: 11400000, guid: 985da32252b0fbc41943527ce9f9a98c, type: 2}
   Wagon: {fileID: 2235014338450753597, guid: 6c6bb65ee961cd841b2ea552fd622f31, type: 3}
   head: {fileID: 6639473861200065612}
   TrainData: {fileID: 11400000, guid: 700c429dc9e6e424784eafd57315ccd9, type: 2}

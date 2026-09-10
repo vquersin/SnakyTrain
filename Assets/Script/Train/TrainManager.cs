@@ -1,11 +1,11 @@
-using System;
+using Assets.Script.Audio;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrainManager : MonoBehaviour
 {
     [SerializeReference] private EatSomething EatEvent;
+    [SerializeReference] private WagonSpeedMusic WagonSpeedMusicEvent;
     public GameObject Wagon;
     [SerializeReference] private TrainHead head;
     [SerializeReference] private RSO_Train TrainData;
@@ -18,17 +18,23 @@ public class TrainManager : MonoBehaviour
         EatEvent.Eat += OnEat;
     }
 
+    
+
     private void OnDisable()
     {
         EatEvent.Eat -= OnEat;
     }
-
+    
     private void OnEat()
     {
         Debug.Log("J'ai mangé!");
         TrainData.Nb_Wagon++;
         TrainData.m_Speed++;
         NewInstantiateSegmentTrain();
+        if(TrainData.Nb_Wagon == 15)
+        {
+            WagonSpeedMusicEvent.SpeedWagonlimit();
+        }
     }
 
     private void LateUpdate()

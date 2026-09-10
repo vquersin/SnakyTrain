@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class TrainHead : MonoBehaviour
 {
@@ -61,7 +62,7 @@ public class TrainHead : MonoBehaviour
         else if (other.CompareTag("Wall"))
         {
             Debug.Log("Mort! Mort! Mort!");
-            Destroy(transform.parent.gameObject);
+            SceneManager.LoadScene("GameScene");
         }
     }
 }
