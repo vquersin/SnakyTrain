@@ -11,6 +11,8 @@ public class TrainManager : MonoBehaviour
     [SerializeReference] private TrainHead head;
     [SerializeReference] private RSO_Train TrainData;
     [SerializeReference] private AudioSource SwitchSpeedMode;
+    [SerializeReference] private ParticleSystem LeftWheel;
+    [SerializeReference] private ParticleSystem RightWheel;
 
     public List<Transform> List_Wagon = new List<Transform>();
     public int m_SpacingMultiplier = 4;
@@ -50,6 +52,8 @@ public class TrainManager : MonoBehaviour
             SwitchSpeedMode.Play();
             WagonSpeedMusicEvent.SpeedWagonlimit();
             TrainData.m_Speed += 5;
+            LeftWheel.Play();
+            RightWheel.Play();
         }
     }
 
