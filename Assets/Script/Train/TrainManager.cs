@@ -1,5 +1,6 @@
 using Assets.Script.Audio;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TrainManager : MonoBehaviour
@@ -9,9 +10,19 @@ public class TrainManager : MonoBehaviour
     public GameObject Wagon;
     [SerializeReference] private TrainHead head;
     [SerializeReference] private RSO_Train TrainData;
+    [SerializeReference] private AudioSource SwitchSpeedMode;
 
     public List<Transform> List_Wagon = new List<Transform>();
     public int m_SpacingMultiplier = 4;
+    private int SpeedModeNumber = 0;
+
+    public TextMeshProUGUI TrainDisplay;
+
+    private void Awake()
+    {
+        TrainDisplay.text = "0";
+        SpeedModeNumber = UnityEngine.Random.Range(8,15);
+    }
 
     private void OnEnable()
     {
@@ -30,10 +41,15 @@ public class TrainManager : MonoBehaviour
         Debug.Log("J'ai mangé!");
         TrainData.Nb_Wagon++;
         TrainData.m_Speed++;
+        TrainDisplay.text = TrainData.Nb_Wagon.ToString();
         NewInstantiateSegmentTrain();
-        if(TrainData.Nb_Wagon == 15)
+        GetComponent<AudioSource>().Play();
+        
+        if (TrainData.Nb_Wagon == SpeedModeNumber)
         {
+            SwitchSpeedMode.Play();
             WagonSpeedMusicEvent.SpeedWagonlimit();
+            TrainData.m_Speed += 5;
         }
     }
 
@@ -80,13 +96,28 @@ public class TrainManager : MonoBehaviour
         }
 
         Vector3 spawnPos = head.m_PositionHistory[targetIndex];
-
-        GameObject newWagon = Instantiate(
+        if(List_Wagon.Count == 0)
+        {
+            Quaternion RotateNewSegment = head.transform.rotation;
+            GameObject newWagon = Instantiate(
             Wagon,
             spawnPos,
-            Quaternion.identity
-        );
+            RotateNewSegment
+            );
+            List_Wagon.Add(newWagon.transform);
+        }
+        else
+        {
+            Quaternion RotateNewSegment = List_Wagon[^1].rotation;
+            GameObject newWagon = Instantiate(
+                Wagon,
+                spawnPos,
+                RotateNewSegment
+            );
+            List_Wagon.Add(newWagon.transform);
+        }
 
-        List_Wagon.Add(newWagon.transform);
+
+        
     }
 }
