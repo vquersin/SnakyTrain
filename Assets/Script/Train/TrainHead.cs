@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TrainHead : MonoBehaviour
 {
     [SerializeReference] private EatSomething m_Eat;
+    [SerializeReference] private IsDead m_Die;
     public RSO_Train Speed;
     public InputActionReference Rotate;
     private float m_Spacing = 0.5f;
@@ -35,14 +36,26 @@ public class TrainHead : MonoBehaviour
         transform.Rotate(RotateDirection * CurrentSpeedRotate * Time.deltaTime);
 
         // Listage des positions ...
-        if (Vector3.Distance(transform.position,m_LastHeadPosition)>= m_Spacing)
+        float distance = Vector3.Distance(transform.position, m_LastHeadPosition);
+
+        if (distance >= m_Spacing)
         {
-            m_PositionHistory.Insert(0,transform.position);
-            m_LastHeadPosition = transform.position;
+            int steps = Mathf.FloorToInt(distance / m_Spacing);
+
+            Vector3 direction = (transform.position - m_LastHeadPosition).normalized;
+
+            for (int i = 1; i <= steps; i++)
+            {
+                Vector3 newPosition = m_LastHeadPosition + direction * m_Spacing;
+
+                m_PositionHistory.Insert(0, newPosition);
+
+                m_LastHeadPosition = newPosition;
+            }
 
             int maxHistory = (Train_Wagon.Nb_Wagon + 1) * m_TrainManager.m_SpacingMultiplier;
 
-            if (m_PositionHistory.Count > maxHistory)
+            while (m_PositionHistory.Count > maxHistory)
             {
                 m_PositionHistory.RemoveAt(m_PositionHistory.Count - 1);
             }
@@ -62,6 +75,10 @@ public class TrainHead : MonoBehaviour
         else if (other.CompareTag("Wall"))
         {
             Debug.Log("Mort! Mort! Mort!");
+            if (m_Die != null)
+            {
+                m_Die.JustDie();
+            }
             SceneManager.LoadScene("GameScene");
         }
     }

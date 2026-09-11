@@ -1,16 +1,20 @@
+using TMPro;
 using UnityEngine;
 
 public class DisplayManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private TextMeshProUGUI m_TestKM;
+    [SerializeField] private TextMeshProUGUI m_TextHS;
+    [SerializeField] private RSO_Train m_Speed;
+    [SerializeField] private RSO_HighScore m_HS;
+
+    private void Start()
     {
-        
+        m_TestKM.text = m_Speed.m_Speed.ToString()+"0 Km/h";
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        m_TestKM.text = m_Speed.m_Speed.ToString() + "0 Km/h";
     }
 }
