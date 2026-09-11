@@ -74,12 +74,10 @@ public class TrainHead : MonoBehaviour
         }
         else if (other.CompareTag("Wall"))
         {
-            Debug.Log("Mort! Mort! Mort!");
             if (m_Die != null)
             {
                 m_Die.JustDie();
             }
-            SceneManager.LoadScene("GameScene");
         }
     }
 }

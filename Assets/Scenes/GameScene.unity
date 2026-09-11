@@ -5547,6 +5547,7 @@ MonoBehaviour:
   TrainData: {fileID: 11400000, guid: 700c429dc9e6e424784eafd57315ccd9, type: 2}
   m_HS: {fileID: 11400000, guid: bf4b3ca2f3ad849469cf0948879ac39b, type: 2}
   DieEvent: {fileID: 11400000, guid: 031824714145760438058bc5f7575c6a, type: 2}
+  QuitGame: {fileID: 6280823437038676221, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1001 &1732007719
 PrefabInstance:
   m_ObjectHideFlags: 0

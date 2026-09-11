@@ -67,8 +67,6 @@ public class MapManager : MonoBehaviour
         }
         if (ValiditySpawner == true)
         {
-            Debug.Log("Entity RSO : " + entity);
-            Debug.Log("Prefab dans Entity : " + entity.Entity);
             // Instantiate l'argument donné selon coroutine
             Instantiate(entity.Entity, validedPos,Quaternion.identity);
         }

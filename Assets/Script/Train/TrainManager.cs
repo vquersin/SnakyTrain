@@ -40,7 +40,6 @@ public class TrainManager : MonoBehaviour
     
     private void OnEat()
     {
-        Debug.Log("J'ai mangé!");
         TrainData.Nb_Wagon++;
         TrainData.m_Speed++;
         TrainDisplay.text = TrainData.Nb_Wagon.ToString();
@@ -120,8 +119,5 @@ public class TrainManager : MonoBehaviour
             );
             List_Wagon.Add(newWagon.transform);
         }
-
-
-        
     }
 }
