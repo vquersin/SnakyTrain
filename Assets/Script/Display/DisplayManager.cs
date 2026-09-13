@@ -11,12 +11,12 @@ public class DisplayManager : MonoBehaviour
     private void Start()
     {
         m_TestKM.text = m_Speed.m_Speed.ToString()+"0 Km/h";
-        m_TextHS.text = "High Score: " + m_HS.HighScore.ToString();
+        m_TextHS.text = m_HS.HighScore.ToString();
     }
 
     private void Update()
     {
         m_TestKM.text = m_Speed.m_Speed.ToString() + "0 Km/h";
-        m_TextHS.text = "High Score: " + m_HS.HighScore.ToString();
+        m_TextHS.text = m_HS.HighScore.ToString();
     }
 }
